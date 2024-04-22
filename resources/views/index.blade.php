@@ -66,7 +66,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @php $no = 1; @endphp
+                    {{-- @php $no = 1; @endphp
                     @foreach($ujian as $u)
                         <tr>
                             <td>{{ $no++ }}</td>
@@ -76,7 +76,7 @@
                             <td>{{ $u->nama_sesi}}</td>
                             <td>{{ $u->nomor_pc}}</td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>

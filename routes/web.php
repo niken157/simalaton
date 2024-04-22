@@ -35,24 +35,8 @@ Route::get('/produk/edit/{id_produk}', [ProdukController::class, 'edit']);
 Route::post('/produk/update', [ProdukController::class, 'update']);
 Route::get('/produk/hapus/{id_produk}', [ProdukController::class, 'hapus']);
 Route::get('/produk/hapus_semua', [ProdukController::class, 'hapus_s']);
-//halaman peserta
-Route::get('/peserta', [PesertaController::class, 'index']);
-Route::get('/peserta/tambah', [PesertaController::class, 'tambah']);
-Route::post('/peserta/store', [PesertaController::class, 'store']);
-Route::get('/peserta/edit/{id_peserta}', [PesertaController::class, 'edit']);
-Route::post('/peserta/update', [PesertaController::class, 'update']);
-Route::get('/peserta/hapus/{id_peserta}', [PesertaController::class, 'hapus']);
-Route::get('/peserta/hapus_semua', [PesertaController::class, 'hapus_s']);
-Route::post('/peserta/import', [PesertaController::class, 'import'])->name('peserta.import');
-Route::get('/peserta/export', [PesertaController::class, 'export'])->name('peserta.export');
 
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-//setting
-Route::get('/pengaturan', [SettingController::class, 'index']);
-Route::get('/pengaturan_tambah', [SettingController::class, 'create']);
-Route::post('/pengaturan/store', [SettingController::class, 'store']);
-Route::get('/pengaturan_edit/{id_setting}', [SettingController::class, 'edit']);
-Route::post('/pengaturan/update', [SettingController::class, 'update']);
 ?>

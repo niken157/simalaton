@@ -96,7 +96,7 @@
                                 Beranda
                             </a>
                             <div class="sb-sidenav-menu-heading">Data Utama</div>
-                            <a class="nav-link" href="/peserta">
+                            <a class="nav-link" href="/produk">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                                 Data Produk
                             </a>
