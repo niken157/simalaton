@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>SIUSEK</title>
+        <title>SIMALATON</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{{ asset('admin/css/styles.css')}}" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">SIUSEK</a>
+            <a class="navbar-brand ps-3" href="index.html">SIMALATON</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -98,50 +98,20 @@
                             <div class="sb-sidenav-menu-heading">Data Utama</div>
                             <a class="nav-link" href="/peserta">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                                Data Peserta
-                            </a>
-                            <a class="nav-link" href="/kelas">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                                Data Kelas
-                            </a>
-                            <a class="nav-link" href="/ruangan">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                                Data Ruangan
-                            </a>
-                            <a class="nav-link" href="/sesi">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                                Data Sesi
+                                Data Produk
                             </a>
                             <div class="sb-sidenav-menu-heading">Data Administrasi</div>
                             <a class="nav-link" href="/akun_peserta">
-                                <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
-                                Akun Peserta
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
+                                Data Pesanan
                             </a>
                             <a class="nav-link" href="/kartu_peserta">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Ruang Peserta
+                                <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
+                                Data Penjualan
                             </a>
                             <a class="nav-link" href="/berita">
-                                <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
-                                Berita Acara
-                            </a>
-                            <a class="nav-link" href="/daftar_hadir">
-                                <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
-                                Daftar Hadir
-                            </a>
-                            {{-- <a class="nav-link" href="/cetak_ruangan">
-                                <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
-                                Cetak Ruangan
-                            </a> --}}
-                            {{-- <a class="nav-link" href="/backup">
-                                <div class="sb-nav-link-icon"><i class="fas fa-download"></i></div>
-                                Backup DataBase
-
-                            </a> --}}
-                            <div class="sb-sidenav-menu-heading">Setting</div>
-                            <a class="nav-link" href="/pengaturan">
-                                <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
-                                Pengaturan
+                                <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
+                                Riwayat Penjualan
                             </a>
                         </div>
                     <div class="sb-sidenav-footer">
@@ -159,9 +129,9 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">PKL UNISBA 2023</div>
+                            <div class="text-muted">CIPTO BETON 2024</div>
                             <div>
-                                <a href="#">Rizza Maidatul Masfufah, Niken Cahyaning Tyas, Sigit Nur Ervansah</a>
+                                <a href="#">Niken Cahyaning Tyas</a>
                             </div>
                         </div>
                     </div>
