@@ -13,12 +13,7 @@
     <div class="col">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">NAMA PRODUK</label>
-            <input name="nama_produk" type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="exampleFormControlInput1" placeholder="Masukkan nama produk " value="{{ old('nama_produk') }}" required>
-            @error('nama_produk')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{$message}}</strong>
-                </span>
-            @enderror
+            <input name="nama_produk" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama produk " value="{{ old('nama_produk') }}" required>
         </div>
             </div>
         </div>
@@ -26,27 +21,30 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">LEBAR</label>
-                    <input name="lebar" type="text" class="form-control @error('lebar') is-invalid" id="exampleFormControlInput1" value="{{ old('lebar') }}" required>
+                    <input name="lebar" type="number" class="form-control" id="exampleFormControlInput1" value="{{ old('lebar') }}" required>
                 </div>
-                    </div>
+            </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">TINGGI</label>
-                            <input name="tinggi" type="text" class="form-control @error('tinggi') is-invalid" id="exampleFormControlInput1" value="{{ old('tinggi') }}" required>
+                            <input name="tinggi" type="number" class="form-control" id="exampleFormControlInput1" value="{{ old('tinggi') }}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">HARGA</label>
+                            <input name="harga" type="number" class="form-control" id="exampleFormControlInput1" value="{{ old('harga') }}" required>
                         </div>
                             </div>
-                </div>
-        <div class="row">
-    <div class="col">
-         <div class="mb-3">
-            <label for="keterangan">JENIS KELAMIN:</label>
-            <select name="jenis_kelamin" required="reqired" class="form-select" id="jenis_kelamin">
-            <option value="Perempuan">Perempuan</option>
-            <option value="Laki-Laki">Laki-Laki</option>
-            </select>
-        </div>
-            </div>
-        </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">STOK</label>
+                                    <input name="stok" type="number" class="form-control" id="exampleFormControlInput1" value="{{ old('stok') }}" required>
+                                </div>
+                            </div>
+                        </div>
         <div class="row">
     <div class="col">
         </div>

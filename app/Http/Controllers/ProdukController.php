@@ -31,7 +31,7 @@ class ProdukController extends Controller
 	public function store(Request $request)
 	{
         $validator = Validator::make($request->all(), [
-            'nama_produk' => 'required|unique:produk|max:50',
+            'nama_produk' => 'required',
             'stok' => 'required',
             'lebar' => 'required',
 			'tinggi' => 'required',
@@ -66,11 +66,11 @@ class ProdukController extends Controller
 	{
 		// update data produk
 		DB::table('produk')->where('id_produk',$request->id_produk)->update([
-			'nis' => $request->nis,
 			'nama_produk' => $request->nama_produk,
-			'kelas' => $request->kelas,
-			'jenis_kelamin' => $request->jenis_kelamin,
-			'agama' => $request->agama,
+			'stok' => $request->stok,
+			'lebar' => $request->lebar,
+			'tinggi' => $request->tinggi,
+            'harga' => $request->harga,
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
