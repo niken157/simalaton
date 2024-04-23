@@ -14,7 +14,7 @@ class ProdukController extends Controller
 	{
     	// mengambil data dari table produk
 		$produk = DB::table('produk')
-        ->orderBy('nama_produk', 'ASC')
+        //->orderBy('nama_produk', 'ASC')
         // ->limit(10)
         // ->offset(5)
         ->get();//menangkap
@@ -31,21 +31,43 @@ class ProdukController extends Controller
 	public function store(Request $request)
 	{
         $validator = Validator::make($request->all(), [
-            'nis' => 'required|unique:produk|integer',
             'nama_produk' => 'required|unique:produk|max:50',
-            'kelas' => 'required',
-			'jenis_kelamin' => 'required',
-			'agama' => 'required',
+            'stok' => 'required',
+            'lebar' => 'required',
+			'tinggi' => 'required',
+			'harga' => 'required',
             'created_at' => 'required',
             'updated_at' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withInput($request->all())->withErrors($validator);
         }
-		// insert data ke table peserta
-		DB::table('peserta')->insert([
+		// insert data ke table produk
+		DB::table('produk')->insert([
+			'nama_produk' => $request->nama_produk,
+			'stok' => $request->stok,
+			'lebar' => $request->lebar,
+			'tinggi' => $request->tinggi,
+            'harga' => $request->harga,
+            'created_at' => $request->created_at,
+            'updated_at' => $request->updated_at
+		]);
+		return redirect('/produk');
+	}
+	public function edit($id_produk)
+	{
+		// mengambil data produk berdasarkan id yang dipilih
+		$produk = DB::table('produk')->where('id_produk',$id_produk)->first();
+		// passing data produk yang didapat ke view edit.blade.php
+		return view('produk.edit_produk',['produk' => $produk]);
+	}
+	// update data produk
+	public function update(Request $request)
+	{
+		// update data produk
+		DB::table('produk')->where('id_produk',$request->id_produk)->update([
 			'nis' => $request->nis,
-			'nama_peserta' => $request->nama_peserta,
+			'nama_produk' => $request->nama_produk,
 			'kelas' => $request->kelas,
 			'jenis_kelamin' => $request->jenis_kelamin,
 			'agama' => $request->agama,
@@ -54,29 +76,7 @@ class ProdukController extends Controller
 		]);
 		return redirect('/produk');
 	}
-	public function edit($id_produk)
-	{
-		// mengambil data peserta berdasarkan id yang dipilih
-		$peserta = DB::table('peserta')->where('id_peserta',$id_peserta)->first();
-		// passing data peserta yang didapat ke view edit.blade.php
-		return view('peserta.edit_peserta',['peserta' => $peserta]);
-	}
-	// update data peserta
-	public function update(Request $request)
-	{
-		// update data peserta
-		DB::table('peserta')->where('id_peserta',$request->id_peserta)->update([
-			'nis' => $request->nis,
-			'nama_peserta' => $request->nama_peserta,
-			'kelas' => $request->kelas,
-			'jenis_kelamin' => $request->jenis_kelamin,
-			'agama' => $request->agama,
-            'created_at' => $request->created_at,
-            'updated_at' => $request->updated_at
-		]);
-		return redirect('/peserta');
-	}
-	// method untuk hapus data peserta
+	// method untuk hapus data produk
 	public function hapus($id_produk)
 	{
 		DB::table('produk')->where('id_produk',$id_produk)->delete();

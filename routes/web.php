@@ -1,14 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\RuanganController;
-use App\Http\Controllers\UjianController;
-use App\Http\Controllers\SesiController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BackupController;
-use App\Http\Controllers\KelasController;
+
 
 /*
 |--------------------------------------------------------------------------
