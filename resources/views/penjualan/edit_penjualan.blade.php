@@ -4,13 +4,13 @@
 <br>
 <div class="card">
     <div class="card-header">
-        <h3>FORM EDIT DATA PEMESANAN</h3>
+        <h3>FORM EDIT DATA PENJUALAN</h3>
       </div>
     <div class="card-body">
       <?php
         $date= date('d F Y, h:i:s A');
         ?>
-    <form action="/pemesanan/update" method="post">
+    <form action="/penjualan/update" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="id_penjualan" value="{{ $penjualan->id_penjualan }}">
         <div class="row">

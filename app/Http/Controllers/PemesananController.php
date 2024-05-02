@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PenjualanController extends Controller
+class PemesananController extends Controller
 {
     public function __construct()
     {
@@ -16,14 +16,14 @@ class PenjualanController extends Controller
     {
         $penjualan = DB::table('penjualan')
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                     ->where('keterangan', 'proses')
+                     ->where('keterangan', 'pesan')
                     ->get();
-        return view('penjualan.penjualan',['penjualan' => $penjualan]);
+        return view('pemesanan.pemesanan',['penjualan' => $penjualan]);
     }
     public function tambah()
 	{
 		// memanggil view tambah
-		return view('penjualan.tambah_penjualan');
+		return view('pemesanan.tambah_pemesanan');
 	}
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
@@ -52,7 +52,7 @@ class PenjualanController extends Controller
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
-		return redirect('/penjualan');
+		return redirect('/pemesanan');
 	}
 	public function edit($id_penjualan)
 	{
@@ -62,7 +62,7 @@ class PenjualanController extends Controller
         ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
         ->where('id_penjualan',$id_penjualan)->first();
 		// passing data penjualan yang didapat ke view edit.blade.php
-		return view('penjualan.edit_penjualan',['penjualan' => $penjualan]);
+		return view('pemesanan.edit_pemesanan',['penjualan' => $penjualan]);
 	}
 	// update data produk
 	public function update(Request $request)
@@ -78,20 +78,20 @@ class PenjualanController extends Controller
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
-		return redirect('/penjualan');
+		return redirect('/pemesanan');
 	}
 	// method untuk hapus data produk
 	public function hapus($id_penjualan)
 	{
 		DB::table('penjualan')->where('id_penjualan',$id_penjualan)->delete();
 
-		return redirect('/penjualan');
+		return redirect('/pemesanan');
 	}
     public function hapus_s()
 	{
 		DB::table('penjualan')->truncate();
-        alert()->info('Berhasil Menghapus','Data Semua penjualan Telah Berhasil Dihapus');
-		return redirect('/penjualan');
+        alert()->info('Berhasil Menghapus','Data Semua pemesanan Telah Berhasil Dihapus');
+		return redirect('/pemesanan');
 	}
 
 }

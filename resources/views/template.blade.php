@@ -101,15 +101,15 @@
                                 Data Produk
                             </a>
                             <div class="sb-sidenav-menu-heading">Data Administrasi</div>
-                            <a class="nav-link" href="/akun_peserta">
+                            <a class="nav-link" href="/pemesanan">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
                                 Data Pesanan
                             </a>
-                            <a class="nav-link" href="/kartu_peserta">
+                            <a class="nav-link" href="/penjualan">
                                 <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
                                 Data Penjualan
                             </a>
-                            <a class="nav-link" href="/berita">
+                            <a class="nav-link" href="/riwayat">
                                 <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                                 Riwayat Penjualan
                             </a>
