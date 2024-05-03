@@ -20,26 +20,41 @@
             <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/produk/hapus_semua" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a>
         </div>
         <div class="card-body table-responsive">
+            <form>
+                <div class="form-group row">
+                &nbsp; &nbsp; &nbsp;<h6>No Penjualan : {{ $pertama->nomer_penjualan}} </h6>
+                </div>
+                <div class="form-group row">
+                &nbsp; &nbsp; &nbsp;<h6>Nama Pembeli : {{ $pertama->nama_pembeli}} </h6>
+                </div>
+                <div class="form-group row">
+                    &nbsp; &nbsp; &nbsp;<h6>Nomer HP : {{ $pertama->no_hp}} </h6>
+                    </div>
+                    <div class="form-group row">
+                        &nbsp; &nbsp; &nbsp;<h6>Alamat : {{ $pertama->alamat}} </h6>
+                        </div>
+              </form>
             <table class="table table-striped table-hover" id="datatablesSimple">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nomer Penjualan</th>
-                        <th>Nama Pembeli</th>
-                        <th>Total jumlah Pembelian</th>
+                        <th>Produk</th>
+                        <th>Jumlah</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php $no = 1; @endphp
+                    @php
+                        $no = 1; @endphp
                     @foreach($penjualan as $u)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $u->nomer_penjualan}}</td>
-                            <td><p class="upper">{{ $u->nama_pembeli }}</p></td>
-                            <td>0</td>
+                            <td>{{ $u->nama_produk }} | {{ $u->lebar }}X{{ $u->tinggi }}</td>
+                            <td>{{ $u->jumlah}}</td>
                             <td>
-                                <a class="btn btn-outline-warning" href="detail/{{ $u->nomer_penjualan }}" role="button" title="Edit Data Penjualan"><i class="fas fa-search"></i></a>
+                                <a class="btn btn-outline-primary" href="/pemesanan/edit/{{ $u->id_penjualan }}" role="button" title="Edit Data Pemesanan"><i class="fas fa-fw fa-edit"></i></a>
+
+                                <a class="btn btn-outline-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?')" href="/pemesanan/hapus/{{ $u->id_penjualan }}" role="button" title="Hapus Data Pemesanan"><i class="fas fa-fw fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

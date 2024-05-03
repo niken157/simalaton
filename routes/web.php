@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\DetailController;
 
 
 /*
@@ -50,6 +51,7 @@ Route::get('/penjualan/edit/{id_penjualan}', [PenjualanController::class, 'edit'
 Route::post('/penjualan/update', [PenjualanController::class, 'update']);
 Route::get('/penjualan/hapus/{id_penjualan}', [PenjualanController::class, 'hapus']);
 Route::get('/penjualan/hapus_semua', [PenjualanController::class, 'hapus_s']);
+Route::get('/detail/{nomer_penjualan}', [PenjualanController::class, 'detailshow']);
 //halaman riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);
 Auth::routes();

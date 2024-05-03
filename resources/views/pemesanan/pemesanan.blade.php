@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nomer Penjualan</th>
                         <th>Nama Pembeli</th>
                         <th>Produk</th>
                         <th>Jumlah</th>
@@ -37,6 +38,7 @@
                     @foreach($penjualan as $u)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td>{{ $u->nomer_penjualan}}</td>
                             <td><p class="upper">{{ $u->nama_pembeli }}</p></td>
                             <td>{{ $u->nama_produk }} | {{ $u->lebar }}X{{ $u->tinggi }}</td>
                             <td>{{ $u->jumlah}}</td>

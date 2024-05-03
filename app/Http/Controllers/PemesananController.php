@@ -17,6 +17,7 @@ class PemesananController extends Controller
         $penjualan = DB::table('penjualan')
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                      ->where('keterangan', 'pesan')
+                     //->where('nomer_penjualan','345235')
                     ->get();
         return view('pemesanan.pemesanan',['penjualan' => $penjualan]);
     }

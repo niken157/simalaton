@@ -6,37 +6,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PenjualanController extends Controller
+class DetailController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index($nomer_penjualan)
     {
         $penjualan = DB::table('penjualan')
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                     //->where('keterangan', 'proses')
-                     ->groupBy('nomer_penjualan')
-                    ->get();
-        $jumlah = DB::table('penjualan')
-                    ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                    ->groupBy('nomer_penjualan')
+                     ->where('nomer_penjualan',$nomer_penjualan)
+                     //->groupBy('nomer_penjualan')
                     ->get();
        //Count(tb_sewa.jumlah_sewa)
-        return view('penjualan.penjualan',['penjualan' => $penjualan,'jumlah' => $jumlah]);
-    }
-    public function detailshow($nomer_penjualan)
-    {
-        $penjualan = DB::table('penjualan')
-                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                     ->where('nomer_penjualan',$nomer_penjualan)
-                     ->get();
-        $pertama = DB::table('penjualan')
-                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                     ->where('nomer_penjualan',$nomer_penjualan)
-                     ->first();
-        return view('penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama]);
+        return view('penjualan.detail',['penjualan' => $penjualan]);
     }
     public function tambah()
 	{
@@ -46,19 +30,6 @@ class PenjualanController extends Controller
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
 	{
-        // $validator = Validator::make($request->all(), [
-        //     'id_produk' => 'required',
-        //     'jumlah' => 'required',
-        //     'nama_pembeli' => 'required',
-		// 	'no_hp' => 'required',
-		// 	'alamat' => 'required',
-        //     'keterangan' => 'required',
-        //     'created_at' => 'required',
-        //     'updated_at' => 'required',
-        // ]);
-        // if ($validator->fails()) {
-        //     return back()->withInput($request->all())->withErrors($validator);
-        // }
 		// insert data ke table penjualan
 		DB::table('penjualan')->insert([
 			'id_produk' => $request->id_produk,
