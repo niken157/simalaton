@@ -146,6 +146,7 @@
                         <th>No</th>
                         <th>Nomer Penjualan</th>
                         <th>Nama Pembeli</th>
+                        <th>Jenis Produk</th>
                         <th>Total Harga Pembelian</th>
                         <th>Aksi</th>
                     </tr>
@@ -157,6 +158,13 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $u->nomer_penjualan}}</td>
                             <td><p class="upper">{{ $u->nama_pembeli }}</p></td>
+                            @php
+                                $up = DB::table('penjualan')
+                                ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                                ->where('nomer_penjualan',$u->nomer_penjualan)
+                                ->get();
+                            @endphp
+                            <td>{{ $up->count()}}</td>
                             @php
                             $total_semua = DB::table('penjualan')
                             ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')

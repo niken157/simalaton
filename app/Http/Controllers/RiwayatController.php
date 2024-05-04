@@ -45,5 +45,13 @@ class RiwayatController extends Controller
 
         return view('detailriwayat',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
+    public function cetak()
+    {
+        $penjualan = DB::table('penjualan')
+                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                     //->where('nomer_penjualan',$nomer_penjualan)
+                     ->get();
+            return view('cetak',['penjualan' => $penjualan]);//variabel passing
+    }
 
 }

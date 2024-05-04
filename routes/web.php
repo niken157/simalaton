@@ -55,6 +55,7 @@ Route::get('/detail/selesai/{nomer_penjualan}', [PenjualanController::class, 'up
 //halaman riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);
 Route::get('/riwayatt/{nomer_penjualan}', [RiwayatController::class, 'detail']);
+Route::get('/cetak', [RiwayatController::class, 'cetak']);
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

@@ -68,7 +68,8 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-outline-primary" href="detail/nota/{{ $pertama->nomer_penjualan }}" role="button" title="Cetak Data Penjualan"><i class="fa-solid fa-print"></i>&nbsp;Nota</a>
+            <a class="btn btn-outline-warning" title="Cetak Berita Acara Digital " href="/cetak_berita/{{ $p->nama_ruangan }}/{{ $p->nama_sesi }}" role="button" target="_blank"><i class="fas fa-fw fa-print"> </i>Cetak</a>
+            <a class="btn btn-outline-primary" href="detail/nota/{{ $pertama->nomer_penjualan }}" role="button" target="_blank" title="Cetak Data Penjualan"><i class="fa-solid fa-print"></i>&nbsp;Nota</a>
         </div>
     </div>
 
