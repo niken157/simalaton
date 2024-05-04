@@ -14,21 +14,18 @@
     <div class="card-header">
             <!-- <i class="fas fa-table me-1"></i> -->
             <span style=" font-size: 1cm;">
-            DATA RIWAYAT
+            RIWAYAT PENJUALAN
             <span style="float: right">
-            <a class="align-items-center justify-content-between btn btn-primary" href="/pemesanan/tambah" role="button"><i class="fas fa-fw fa-plus"></i> Tambah Data</a>
-            <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/produk/hapus_semua" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a>
-        </div>
+</div>
         <div class="card-body table-responsive">
             <table class="table table-striped table-hover" id="datatablesSimple">
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nomer Penjualan</th>
                         <th>Nama Pembeli</th>
-                        <th>Produk</th>
-                        <th>Jumlah</th>
-                        <th>No HP</th>
-                        <th>Alamat</th>
+                        <th>Total Harga Pembelian</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +33,19 @@
                     @foreach($penjualan as $u)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td>{{ $u->nomer_penjualan}}</td>
                             <td><p class="upper">{{ $u->nama_pembeli }}</p></td>
-                            <td>{{ $u->nama_produk }} | {{ $u->lebar }}X{{ $u->tinggi }}</td>
-                            <td>{{ $u->jumlah}}</td>
-                            <td>{{ $u->no_hp}}</td>
-                            <td>{{ $u->alamat}}</td>
+                            @php
+                            $total_semua = DB::table('penjualan')
+                            ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                            ->where('nomer_penjualan',$u->nomer_penjualan)
+                            ->sum(DB::raw('jumlah * harga'));
+                            $semua = number_format($total_semua, 0, ',', '.') . ',00'; // Format: 1.000.000
+                            @endphp
+                        <th ><b>Rp.{{ $semua}}</b></th>
+                            <td>
+                                <a class="btn btn-outline-warning" href="riwayatt/{{ $u->nomer_penjualan }}" role="button" title="Edit Data Penjualan"><i class="fas fa-search"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

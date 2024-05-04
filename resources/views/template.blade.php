@@ -102,7 +102,7 @@
                             </a>
                             <div class="sb-sidenav-menu-heading">Data Administrasi</div>
                             <a class="nav-link" href="/pemesanan">
-                                <div class="sb-nav-link-icon"><i class="fas fa-pen-to-square"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                                 Data Pesanan
                             </a>
                             <a class="nav-link" href="/penjualan">

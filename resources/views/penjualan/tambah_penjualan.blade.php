@@ -75,7 +75,6 @@
                 <div class="mb-3">
                     <label for="keterangan">KETERANGAN:</label>
             <select name="keterangan" required="reqired" class="form-select" id="keterangan">
-            <option value="proses" >Proses</option>
             <option value="pesan" selected >Pesan</option>
             <option value="selesai" >Selesai</option>
             </select>

@@ -51,8 +51,10 @@ Route::post('/penjualan/update', [PenjualanController::class, 'update']);
 Route::get('/penjualan/hapus/{id_penjualan}', [PenjualanController::class, 'hapus']);
 Route::get('/penjualan/hapus_kelompok/{nomer_penjualan}', [PenjualanController::class, 'hapus_s']);
 Route::get('/detail/{nomer_penjualan}', [PenjualanController::class, 'detailshow']);
+Route::get('/detail/selesai/{nomer_penjualan}', [PenjualanController::class, 'updateData']);
 //halaman riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);
+Route::get('/riwayatt/{nomer_penjualan}', [RiwayatController::class, 'detail']);
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

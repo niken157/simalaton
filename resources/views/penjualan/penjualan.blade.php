@@ -115,7 +115,6 @@
                                             <div class="mb-3">
                                                 <label for="keterangan">KETERANGAN:</label>
                                         <select name="keterangan" required="reqired" class="form-select" id="keterangan">
-                                        <option value="proses" >Proses</option>
                                         <option value="pesan" selected >Pesan</option>
                                         <option value="selesai" >Selesai</option>
                                         </select>
@@ -138,7 +137,7 @@
                 </div>
                 </div>
             </div>
-            <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/produk/hapus_semua" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a>
+            {{-- <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/produk/hapus_semua" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a> --}}
         </div>
         <div class="card-body table-responsive">
             <table class="table table-striped table-hover" id="datatablesSimple">

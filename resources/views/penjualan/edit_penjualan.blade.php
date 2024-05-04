@@ -43,7 +43,6 @@
                     <label for="keterangan">KETERANGAN:</label>
             <select name="keterangan" required="reqired" class="form-select" id="keterangan">
             <option value="{{ $penjualan->keterangan }}">{{ $penjualan->keterangan }}</option>
-            <option value="proses" @if ($penjualan->keterangan=="proses") selected @endif>Proses</option>
             <option value="pesan" @if ($penjualan->keterangan=="pesan") selected @endif>Pesan</option>
             <option value="selasai" @if ($penjualan->keterangan=="selasai") selected @endif>Selasai</option>
             </select>

@@ -16,14 +16,14 @@ class PenjualanController extends Controller
     {
         $penjualan = DB::table('penjualan')
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                     //->where('keterangan', 'proses')
+                     ->where('keterangan', 'pesan')
                      ->groupBy('nomer_penjualan')
                     ->get();
         $jumlah = DB::table('penjualan')
                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                     ->groupBy('nomer_penjualan')
                     ->get();
-                    
+
        //Count(tb_sewa.jumlah_sewa)
         return view('penjualan.penjualan',['penjualan' => $penjualan,'jumlah' => $jumlah]);
     }
@@ -117,5 +117,27 @@ class PenjualanController extends Controller
         alert()->info('Berhasil Menghapus','Data penjualan Telah Berhasil Dihapus');
 		return redirect('/penjualan');
 	}
+    public function updateData($nomer_penjualan)
+{
 
+    $dataToUpdate = DB::table('penjualan')->get();
+
+foreach ($dataToUpdate as $data) {
+    // Lakukan perubahan pada data
+    // Misalnya:
+    // $data->field1 = 'New Value 1';
+    // $data->field2 = 'New Value 2';
+
+    // Simpan perubahan menggunakan metode query builder
+    DB::table('penjualan')
+    ->where('nomer_penjualan',$nomer_penjualan)
+        ->update([
+            'keterangan' => 'selesai',
+            // Tambahkan perubahan pada kolom lain sesuai kebutuhan
+        ]);
+}
+alert()->info('Pesanan Selesai','Data penjualan Telah Selesai Dikirim');
+return redirect('/penjualan');
+
+}
 }

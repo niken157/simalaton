@@ -14,7 +14,7 @@
     <div class="card-header">
             <!-- <i class="fas fa-table me-1"></i> -->
             <span style=" font-size: 1cm;">
-            DATA PENJUALAN
+            DETAIL PENJUALAN
             <span style="float: right">
             {{-- <a class="align-items-center justify-content-between btn btn-primary" href="/pemesanan/tambah" role="button"><i class="fas fa-fw fa-plus"></i> Tambah</a> --}}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-fw fa-plus"></i>&nbsp;Tambah Data</button>
@@ -71,7 +71,6 @@
                                         <div class="mb-3">
                                             <label for="keterangan">KETERANGAN:</label>
                                     <select name="keterangan" required="reqired" class="form-select" id="keterangan">
-                                    <option value="proses" >Proses</option>
                                     <option value="pesan" selected >Pesan</option>
                                     <option value="selesai" >Selesai</option>
                                     </select>
@@ -86,7 +85,6 @@
                                 <input type="hidden" name="created_at" value="<?php echo date('Y-m-d h:i:s'); ?>">
                                 <input type="hidden" name="updated_at" value="<?php echo date('Y-m-d h:i:s'); ?>">
                                 <input type="submit" value="SIMPAN DATA" class="btn btn-primary">
-                                {{-- <input type="submit" value="Tambah" name="tambah_sewa" class="btn btn-outline-success btn-lg btn-block"> --}}
                                 </fieldset>
                         </form>
                         </div>
@@ -99,7 +97,7 @@
                 </div>
             </div>
 
-            <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/penjualan/hapus_kelompok/{{ $pertama->nomer_penjualan }}" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a>
+            <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/penjualan/hapus_kelompok/{{ $pertama->nomer_penjualan }}" role="button"><i class="fas fa-fw fa-trash"></i> Batal Pesanan</a>
         </div>
         <div class="card-body table-responsive">
             <form>
@@ -139,7 +137,7 @@
                             <td>Rp.{{ $rupiah}}</td>
                             <td>Rp.{{ $ttl}}</td>
                             <td>
-                                <a class="btn btn-outline-primary" href="/penjualan/edit/{{ $u->id_penjualan }}" role="button" title="Edit Data"><i class="fas fa-fw fa-edit"></i></a>
+                                {{-- <a class="btn btn-outline-primary" href="/penjualan/edit/{{ $u->id_penjualan }}" role="button" title="Edit Data"><i class="fas fa-fw fa-edit"></i></a> --}}
 
                                 <a class="btn btn-outline-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?')" href="/penjualan/hapus/{{ $u->id_penjualan }}" role="button" title="Hapus Data"><i class="fas fa-fw fa-trash"></i></a>
                             </td>
@@ -158,6 +156,8 @@
                     </tr>
                 </tbody>
             </table>
+            <a class="btn btn-outline-success" href="selesai/{{ $pertama->nomer_penjualan }}" role="button" title="Pesanan Selesai"><i class="fa-solid fa-check-to-slot"></i>&nbsp;Pesanan Selesai</a>
+            <a class="btn btn-outline-primary" href="detail/nota/{{ $pertama->nomer_penjualan }}" role="button" title="Cetak Data Penjualan"><i class="fa-solid fa-print"></i>&nbsp;Nota</a>
         </div>
     </div>
 
