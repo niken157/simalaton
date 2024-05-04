@@ -15,7 +15,7 @@
             padding: 20px;
             max-width: 600px;
             margin: 0 auto;
-            min-height: 600px; /* Tinggi minimal untuk nota */
+            min-height: 580px; /* Tinggi minimal untuk nota */
         }
         .melayani {
             border: 2px solid #010101;
@@ -69,10 +69,6 @@
             text-align: center;
             margin-top: 50px;
         }
-        .ttd img {
-            max-width: 150px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -109,10 +105,17 @@
                         <td>1</td>
                         <td>Beton K225</td>
                         <td>5</td>
-                        <td>500.000</td>
-                        <td>2.500.000</td>
+                        <td>Rp 500.000</td>
+                        <td>Rp 2.500.000</td>
                     </tr>
                     <!-- Tambahkan baris data lain sesuai dengan kebutuhan -->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><p><strong>Total :</strong></p></td>
+                        <td><p>Rp 2.500.000</p></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -125,11 +128,11 @@
         <!-- Tanda Tangan -->
         <div class="ttd">
             <div class="keterangan-kiri">
-                <p>Tanda Terima:</p><br>
+                <p><center>Tanda Terima:<center></p><br>
                 <p>_________________</p>
             </div>
             <div class="keterangan-kanan">
-                <p>Hormat kami:</p><br>
+                <p><center>Hormat kami:<center></p><br>
                 <p>_________________</p>
             </div>
         </div>
