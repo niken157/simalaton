@@ -46,6 +46,7 @@ class PemesananController extends Controller
 		DB::table('penjualan')->insert([
 			'id_produk' => $request->id_produk,
 			'jumlah' => $request->jumlah,
+            'nomer_penjualan' => '346346',
 			'nama_pembeli' => $request->nama_pembeli,
 			'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,

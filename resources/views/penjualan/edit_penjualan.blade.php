@@ -28,36 +28,14 @@
                     </select>
                 </div>
     </div>
+        </div>
+    <div class="row">
     <div class="col">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">JUMLAH</label>
             <input name="jumlah" type="number" class="form-control" id="exampleFormControlInput1" value="{{ $penjualan->jumlah }}" required>
         </div>
         </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">NAMA PEMBELI</label>
-            <input name="nama_pembeli" type="text" class="form-control" id="exampleFormControlInput1" value="{{ $penjualan->nama_pembeli }}" required>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">NO HP</label>
-            <input name="no_hp" type="text" class="form-control" id="exampleFormControlInput1" value="{{ $penjualan->no_hp }}" required>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Alamat</label>
-            <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3" required><?php echo $penjualan->alamat; ?></textarea>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col">
@@ -72,6 +50,10 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="nama_pembeli" value="{{ $penjualan->nama_pembeli}}">
+                                <input type="hidden" name="no_hp" value="{{ $penjualan->no_hp}}">
+                                <input type="hidden" name="alamat" value="{{ $penjualan->alamat}}">
+                                <input type="hidden" name="nomer_penjualan" value="{{ $penjualan->nomer_penjualan}}">
         <input type="hidden" name="created_at" value="{{ $penjualan->created_at }}">
         <input type="hidden" name="updated_at" value="<?php echo date('Y-m-d h:i:s'); ?>">
         <input type="submit" value="Simpan Data" class="btn btn-primary">

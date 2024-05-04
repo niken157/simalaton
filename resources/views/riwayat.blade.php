@@ -14,7 +14,7 @@
     <div class="card-header">
             <!-- <i class="fas fa-table me-1"></i> -->
             <span style=" font-size: 1cm;">
-            DATA PENJUALAN
+            DATA RIWAYAT
             <span style="float: right">
             <a class="align-items-center justify-content-between btn btn-primary" href="/pemesanan/tambah" role="button"><i class="fas fa-fw fa-plus"></i> Tambah Data</a>
             <a class="align-items-center justify-content-between btn btn-danger" onclick="return confirm('Apakah Anda Yakin Menghapus Semua Data?')" href="/produk/hapus_semua" role="button"><i class="fas fa-fw fa-trash"></i> Hapus Semua</a>

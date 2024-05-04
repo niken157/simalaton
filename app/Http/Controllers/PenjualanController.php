@@ -23,6 +23,7 @@ class PenjualanController extends Controller
                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                     ->groupBy('nomer_penjualan')
                     ->get();
+                    
        //Count(tb_sewa.jumlah_sewa)
         return view('penjualan.penjualan',['penjualan' => $penjualan,'jumlah' => $jumlah]);
     }
@@ -36,13 +37,14 @@ class PenjualanController extends Controller
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                      ->where('nomer_penjualan',$nomer_penjualan)
                      ->first();
-        return view('penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama]);
+        $total_semua = DB::table('penjualan')
+                            ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                            ->where('nomer_penjualan',$nomer_penjualan)
+                            //->sum('jumlah'*'harga');
+                            ->sum(DB::raw('jumlah * harga'));
+
+        return view('penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
-    public function tambah()
-	{
-		// memanggil view tambah
-		return view('penjualan.tambah_penjualan');
-	}
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
 	{
@@ -63,6 +65,7 @@ class PenjualanController extends Controller
 		DB::table('penjualan')->insert([
 			'id_produk' => $request->id_produk,
 			'jumlah' => $request->jumlah,
+            'nomer_penjualan' => $request->nomer_penjualan,
 			'nama_pembeli' => $request->nama_pembeli,
 			'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
@@ -70,7 +73,8 @@ class PenjualanController extends Controller
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
-		return redirect('/penjualan');
+		//return redirect('/penjualan');
+        return redirect()->back()->with('success', 'Data Telah Ditambahkan');
 	}
 	public function edit($id_penjualan)
 	{
@@ -89,6 +93,7 @@ class PenjualanController extends Controller
 		DB::table('penjualan')->where('id_penjualan',$request->id_penjualan)->update([
 			'id_produk' => $request->id_produk,
 			'jumlah' => $request->jumlah,
+            'nomer_penjualan' => $request->nomer_penjualan,
 			'nama_pembeli' => $request->nama_pembeli,
 			'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
@@ -97,6 +102,7 @@ class PenjualanController extends Controller
             'updated_at' => $request->updated_at
 		]);
 		return redirect('/penjualan');
+        //return redirect()->back()->with('success', 'Data Telah Diubah');
 	}
 	// method untuk hapus data produk
 	public function hapus($id_penjualan)
@@ -105,10 +111,10 @@ class PenjualanController extends Controller
 
 		return redirect('/penjualan');
 	}
-    public function hapus_s()
+    public function hapus_s($nomer_penjualan)
 	{
-		DB::table('penjualan')->truncate();
-        alert()->info('Berhasil Menghapus','Data Semua penjualan Telah Berhasil Dihapus');
+		DB::table('penjualan')->where('nomer_penjualan',$nomer_penjualan)->delete();
+        alert()->info('Berhasil Menghapus','Data penjualan Telah Berhasil Dihapus');
 		return redirect('/penjualan');
 	}
 

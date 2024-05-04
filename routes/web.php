@@ -45,12 +45,11 @@ Route::get('/pemesanan/hapus/{id_penjualan}', [PemesananController::class, 'hapu
 Route::get('/pemesanan/hapus_semua', [PemesananController::class, 'hapus_s']);
 //halaman penjualan
 Route::get('/penjualan', [PenjualanController::class, 'index']);
-Route::get('/penjualan/tambah', [PenjualanController::class, 'tambah']);
 Route::post('/penjualan/store', [PenjualanController::class, 'store']);
 Route::get('/penjualan/edit/{id_penjualan}', [PenjualanController::class, 'edit']);
 Route::post('/penjualan/update', [PenjualanController::class, 'update']);
 Route::get('/penjualan/hapus/{id_penjualan}', [PenjualanController::class, 'hapus']);
-Route::get('/penjualan/hapus_semua', [PenjualanController::class, 'hapus_s']);
+Route::get('/penjualan/hapus_kelompok/{nomer_penjualan}', [PenjualanController::class, 'hapus_s']);
 Route::get('/detail/{nomer_penjualan}', [PenjualanController::class, 'detailshow']);
 //halaman riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);
