@@ -45,10 +45,6 @@
         .detail-pembelian th {
             background-color: #f2f2f2;
         }
-        .total-pembelian {
-            text-align: right;
-            margin-top: 20px;
-        }
         .keterangan-kiri, .keterangan-kanan {
             width: 50%;
             float: left;
@@ -118,11 +114,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- Total Pembelian -->
-        <div class="total-pembelian">
-            <p><strong>Total :</strong> Rp 2.500.000</p>
         </div>
 
         <!-- Tanda Tangan -->
