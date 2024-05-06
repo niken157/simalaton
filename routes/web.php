@@ -52,10 +52,11 @@ Route::get('/penjualan/hapus/{id_penjualan}', [PenjualanController::class, 'hapu
 Route::get('/penjualan/hapus_kelompok/{nomer_penjualan}', [PenjualanController::class, 'hapus_s']);
 Route::get('/detail/{nomer_penjualan}', [PenjualanController::class, 'detailshow']);
 Route::get('/detail/selesai/{nomer_penjualan}', [PenjualanController::class, 'updateData']);
+Route::get('/detail/nota/{nomer_penjualan}', [PenjualanController::class, 'cetak']);
 //halaman riwayat
 Route::get('/riwayat', [RiwayatController::class, 'index']);
 Route::get('/riwayatt/{nomer_penjualan}', [RiwayatController::class, 'detail']);
-Route::get('/cetak', [RiwayatController::class, 'cetak']);
+Route::get('/riwayatt/nota/{nomer_penjualan}', [PenjualanController::class, 'cetak']);
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');

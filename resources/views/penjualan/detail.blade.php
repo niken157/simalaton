@@ -157,8 +157,9 @@
                 </tbody>
             </table>
             <a class="btn btn-outline-success" href="selesai/{{ $pertama->nomer_penjualan }}" role="button" title="Pesanan Selesai"><i class="fa-solid fa-check-to-slot"></i>&nbsp;Pesanan Selesai</a>
-            <a class="btn btn-outline-primary" href="detail/nota/{{ $pertama->nomer_penjualan }}" role="button" title="Cetak Data Penjualan"><i class="fa-solid fa-print"></i>&nbsp;Nota</a>
+            <a class="btn btn-outline-primary" href="nota/{{ $pertama->nomer_penjualan }}" role="button" title="Cetak Data Penjualan"><i class="fa-solid fa-print"></i>&nbsp;Nota</a>
         </div>
     </div>
+
 
 @endsection

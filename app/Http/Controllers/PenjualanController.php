@@ -45,6 +45,24 @@ class PenjualanController extends Controller
 
         return view('penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
+    public function cetak($nomer_penjualan)
+    {
+        $penjualan = DB::table('penjualan')
+                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                     ->where('nomer_penjualan',$nomer_penjualan)
+                     ->get();
+        $pertama = DB::table('penjualan')
+                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                     ->where('nomer_penjualan',$nomer_penjualan)
+                     ->first();
+        $total_semua = DB::table('penjualan')
+                            ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                            ->where('nomer_penjualan',$nomer_penjualan)
+                            //->sum('jumlah'*'harga');
+                            ->sum(DB::raw('jumlah * harga'));
+
+        return view('cetak',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
+    }
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
 	{

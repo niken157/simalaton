@@ -68,6 +68,30 @@
     </style>
 </head>
 <body>
+    <?php
+    function tgl_indo($tanggal){
+        $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $pecahkan = explode('-', $tanggal);
+
+        // variabel pecahkan 0 = tanggal
+        // variabel pecahkan 1 = bulan
+        // variabel pecahkan 2 = tahun
+
+        return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+    }?>
     <div class="nota">
         <!-- Keterangan Kiri -->
         <div class="keterangan-kiri">
@@ -78,9 +102,9 @@
 
         <!-- Keterangan Kanan -->
         <div class="keterangan-kanan">
-            <p>Blitar, 4 Mei 2024</p>
-            <p>Kepada Yth. John Doe</p>
-            <p><strong>No. Nota:</strong> 001/MEI/2024</p>
+            <p>Blitar, <?php echo tgl_indo(date('Y-m-d')); ?></p>
+            <p>Kepada Yth. {{ $pertama->nama_pembeli}}</p>
+            <p><strong>No. Nota:</strong> {{ $pertama->nomer_penjualan}}/<?php echo date('F/Y'); ?></p>
             <!-- Tambahkan keterangan lain di sini -->
         </div>
 
@@ -97,20 +121,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $no = 1;
+                         @endphp
+                         @foreach($penjualan as $u)
                     <tr>
-                        <td>1</td>
-                        <td>Beton K225</td>
-                        <td>5</td>
-                        <td>Rp 500.000</td>
-                        <td>Rp 2.500.000</td>
+                        <td>{{ $no++ }}</td>
+                            <td>{{ $u->nama_produk }} | {{ $u->lebar }}X{{ $u->tinggi }}</td>
+                        <td>{{ $u->jumlah}}</td>
+                        @php
+                            $rupiah = number_format($u->harga, 0, ',', '.'); // Format: 1.000.000
+                            $total = $u->harga*$u->jumlah;
+                            $ttl = number_format($total, 0, ',', '.'); // Format: 1.000.000
+                            @endphp
+                            <td>Rp.{{ $rupiah}}</td>
+                        <td>Rp.{{ $ttl}}</td>
                     </tr>
+                    @endforeach
                     <!-- Tambahkan baris data lain sesuai dengan kebutuhan -->
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td><p><strong>Total :</strong></p></td>
-                        <td><p>Rp 2.500.000</p></td>
+                        @php
+                            $semua = number_format($total_semua, 0, ',', '.'); // Format: 1.000.000
+                            @endphp
+                        <th ><b>Rp.{{ $semua}}</b></th>
                     </tr>
                 </tbody>
             </table>
@@ -128,5 +165,8 @@
             </div>
         </div>
     </div>
+    <script>
+		window.print();
+	</script>
 </body>
 </html>

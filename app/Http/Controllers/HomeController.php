@@ -31,9 +31,18 @@ class HomeController extends Controller
         $produk = DB::table('produk')->get();
         $penjualan = DB::table('penjualan')
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
-                    // ->where('keterangan', 'pinjam')
+                     ->groupBy('nomer_penjualan')
+                     ->where('keterangan', 'pesan')
                     ->get();
-        return view('index',['produk' => $produk,'penjualan' => $penjualan]);
+        $pemesanan = DB::table('penjualan')
+                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                     ->where('keterangan', 'pesan')
+                    ->get();
+        $riwayat = DB::table('penjualan')
+                     ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
+                    ->where('keterangan', 'selesai')
+                    ->get();
+        return view('index',['produk' => $produk,'penjualan' => $penjualan,'pemesanan' => $pemesanan,'riwayat' => $riwayat]);
             // $ujian = DB::table('peserta')
             //          ->join('ujian', 'peserta.id_peserta', '=', 'ujian.id_peserta')
             //          ->join('ruangan', 'ujian.id_ruangan', '=', 'ruangan.id_ruangan')
