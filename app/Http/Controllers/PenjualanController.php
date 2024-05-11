@@ -25,7 +25,7 @@ class PenjualanController extends Controller
                     ->get();
 
        //Count(tb_sewa.jumlah_sewa)
-        return view('penjualan.penjualan',['penjualan' => $penjualan,'jumlah' => $jumlah]);
+        return view('admin.penjualan.penjualan',['penjualan' => $penjualan,'jumlah' => $jumlah]);
     }
     public function detailshow($nomer_penjualan)
     {
@@ -43,7 +43,7 @@ class PenjualanController extends Controller
                             //->sum('jumlah'*'harga');
                             ->sum(DB::raw('jumlah * harga'));
 
-        return view('penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
+        return view('admin.penjualan.detail',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
     public function cetak($nomer_penjualan)
     {
@@ -61,7 +61,7 @@ class PenjualanController extends Controller
                             //->sum('jumlah'*'harga');
                             ->sum(DB::raw('jumlah * harga'));
 
-        return view('cetak',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
+        return view('admin.cetak',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
@@ -102,7 +102,7 @@ class PenjualanController extends Controller
         ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
         ->where('id_penjualan',$id_penjualan)->first();
 		// passing data penjualan yang didapat ke view edit.blade.php
-		return view('penjualan.edit_penjualan',['penjualan' => $penjualan]);
+		return view('admin.penjualan.edit_penjualan',['penjualan' => $penjualan]);
 	}
 	// update data produk
 	public function update(Request $request)

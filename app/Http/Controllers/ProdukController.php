@@ -10,22 +10,33 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ProdukController extends Controller
 {
-	public function index()
+    public function utama()
 	{
     	// mengambil data dari table produk
 		$produk = DB::table('produk')
-        //->orderBy('nama_produk', 'ASC')
+        ->orderBy('nama_produk', 'ASC')
         // ->limit(10)
         // ->offset(5)
         ->get();//menangkap
     	// mengirim data produk ke view index
-		return view('produk.produk',['produk' => $produk]);//variabel passing
+		return view('admin.produk.produk',['produk' => $produk]);//variabel passing
+	}
+	public function index()
+	{
+    	// mengambil data dari table produk
+		$produk = DB::table('produk')
+        ->orderBy('nama_produk', 'ASC')
+        // ->limit(10)
+        // ->offset(5)
+        ->get();//menangkap
+    	// mengirim data produk ke view index
+		return view('admin.produk.produk',['produk' => $produk]);//variabel passing
 	}
 	// method untuk menampilkan view form tambah produk
 	public function tambah()
 	{
 		// memanggil view tambah
-		return view('produk.tambah_produk');
+		return view('admin.produk.tambah_produk');
 	}
 	// method untuk insert data ke table produk
 	public function store(Request $request)
@@ -36,6 +47,7 @@ class ProdukController extends Controller
             'lebar' => 'required',
 			'tinggi' => 'required',
 			'harga' => 'required',
+            'gambar' => 'required',
             'created_at' => 'required',
             'updated_at' => 'required',
         ]);
@@ -49,23 +61,36 @@ class ProdukController extends Controller
 			'lebar' => $request->lebar,
 			'tinggi' => $request->tinggi,
             'harga' => $request->harga,
+            'gambar' => $request->gambar,
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
-		return redirect('/produk');
+		return redirect('/produkk');
 	}
 	public function edit($id_produk)
 	{
 		// mengambil data produk berdasarkan id yang dipilih
 		$produk = DB::table('produk')->where('id_produk',$id_produk)->first();
 		// passing data produk yang didapat ke view edit.blade.php
-		return view('produk.edit_produk',['produk' => $produk]);
+		return view('admin.produk.edit_produk',['produk' => $produk]);
 	}
 	// update data produk
 	public function update(Request $request)
 	{
 		// update data produk
+        if ($request-> gambar) {
 		DB::table('produk')->where('id_produk',$request->id_produk)->update([
+			'nama_produk' => $request->nama_produk,
+			'stok' => $request->stok,
+			'lebar' => $request->lebar,
+			'tinggi' => $request->tinggi,
+            'harga' => $request->harga,
+            'gambar' => $request->gambar,
+            'created_at' => $request->created_at,
+            'updated_at' => $request->updated_at
+		]);
+    }else{
+        DB::table('produk')->where('id_produk',$request->id_produk)->update([
 			'nama_produk' => $request->nama_produk,
 			'stok' => $request->stok,
 			'lebar' => $request->lebar,
@@ -74,20 +99,21 @@ class ProdukController extends Controller
             'created_at' => $request->created_at,
             'updated_at' => $request->updated_at
 		]);
-		return redirect('/produk');
+    }
+		return redirect('/produkk');
 	}
 	// method untuk hapus data produk
 	public function hapus($id_produk)
 	{
 		DB::table('produk')->where('id_produk',$id_produk)->delete();
 
-		return redirect('/produk');
+		return redirect('/produkk');
 	}
     public function hapus_s()
 	{
 		DB::table('produk')->truncate();
         alert()->info('Berhasil Menghapus','Data Semua produk Telah Berhasil Dihapus');
-		return redirect('/produk');
+		return redirect('/produkk');
 	}
 }
 ?>

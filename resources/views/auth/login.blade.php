@@ -21,15 +21,21 @@
                             <strong>{{ "Pastikan Username dan Password Benar"}} </strong>
                         </div>
                         @enderror
-                  <form method="POST" action="{{ route('login') }}">
+                        @error('password')
+                        <div class="alert alert-danger  alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ "Pastikan Username dan Password Benar"}} </strong>
+                        </div>
+                        @enderror
+                  <form method="post" action="/">
                     @csrf
                       <div class="form mb-3">
                           <label class="label" for="email"><strong>User Name</strong></label>
-                          <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                          <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" autofocus>
                       </div>
                      <div class="form mb-3">
                          <label class="label" for="password"><strong>Password</strong></label>
-                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
+                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password" autofocus>
                      </div>
                 <div class="form-group">
                     <button type="submit" value="Log In" class="form-control btn btn-primary rounded submit px-3">Log In</button>

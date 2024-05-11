@@ -19,12 +19,12 @@ class PemesananController extends Controller
                      ->where('keterangan', 'pesan')
                      //->where('nomer_penjualan','345235')
                     ->get();
-        return view('pemesanan.pemesanan',['penjualan' => $penjualan]);
+        return view('admin.pemesanan.pemesanan',['penjualan' => $penjualan]);
     }
     public function tambah()
 	{
 		// memanggil view tambah
-		return view('pemesanan.tambah_pemesanan');
+		return view('admin.pemesanan.tambah_pemesanan');
 	}
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
@@ -64,7 +64,7 @@ class PemesananController extends Controller
         ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
         ->where('id_penjualan',$id_penjualan)->first();
 		// passing data penjualan yang didapat ke view edit.blade.php
-		return view('pemesanan.edit_pemesanan',['penjualan' => $penjualan]);
+		return view('admin.pemesanan.edit_pemesanan',['penjualan' => $penjualan]);
 	}
 	// update data produk
 	public function update(Request $request)

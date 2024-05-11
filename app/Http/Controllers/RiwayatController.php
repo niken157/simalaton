@@ -25,7 +25,7 @@ class RiwayatController extends Controller
                     ->get();
 
        //Count(tb_sewa.jumlah_sewa)
-        return view('riwayat',['penjualan' => $penjualan,'jumlah' => $jumlah]);
+        return view('admin.riwayat',['penjualan' => $penjualan,'jumlah' => $jumlah]);
     }
     public function detail($nomer_penjualan)
     {
@@ -43,7 +43,7 @@ class RiwayatController extends Controller
                             //->sum('jumlah'*'harga');
                             ->sum(DB::raw('jumlah * harga'));
 
-        return view('detailriwayat',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
+        return view('admin.detailriwayat',['penjualan' => $penjualan,'pertama' => $pertama,'total_semua' => $total_semua]);
     }
     public function cetak()
     {
@@ -51,7 +51,7 @@ class RiwayatController extends Controller
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                      //->where('nomer_penjualan',$nomer_penjualan)
                      ->get();
-            return view('cetak',['penjualan' => $penjualan]);//variabel passing
+            return view('admin.cetak',['penjualan' => $penjualan]);//variabel passing
     }
 
 }

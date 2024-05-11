@@ -42,7 +42,7 @@ class HomeController extends Controller
                      ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
                     ->where('keterangan', 'selesai')
                     ->get();
-        return view('index',['produk' => $produk,'penjualan' => $penjualan,'pemesanan' => $pemesanan,'riwayat' => $riwayat]);
+        return view('admin.index',['produk' => $produk,'penjualan' => $penjualan,'pemesanan' => $pemesanan,'riwayat' => $riwayat]);
             // $ujian = DB::table('peserta')
             //          ->join('ujian', 'peserta.id_peserta', '=', 'ujian.id_peserta')
             //          ->join('ruangan', 'ujian.id_ruangan', '=', 'ruangan.id_ruangan')

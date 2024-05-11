@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RedirectController;
 
 
 /*
@@ -20,15 +22,36 @@ use App\Http\Controllers\DetailController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//  jika user belum login
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/', [AuthController::class, 'login'])->name('login');
+    Route::post('/', [AuthController::class, 'dologin']);
 
-Route::get('/ttd', function () {
-    return view('ttd');
 });
-//backup
-Route::get('/backup', [BackupController::class, 'index']);
-Route::get('/backup-database', [BackupController::class, 'backup']);
+
+// untuk superadmin dan pegawai
+Route::group(['middleware' => ['auth', 'checkrole:1,2']], function() {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/redirect', [RedirectController::class, 'cek']);
+});
+
+
+// untuk superadmin
+Route::group(['middleware' => ['auth', 'checkrole:1']], function() {
+    Route::get('/superadmin', [HomeController::class, 'index']);
+});
+
+// untuk pegawai
+Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
+    Route::get('/utama', [UserController::class, 'index']);
+
+});
+// Auth::routes();
+// Route::get('/loginadmin', [HomeController::class, 'index']);
+Route::get('/utama', [UserController::class, 'index']);
 //halaman produk
 Route::get('/produk', [ProdukController::class, 'index']);
+Route::get('/produkk', [ProdukController::class, 'utama']);
 Route::get('/produk/tambah', [ProdukController::class, 'tambah']);
 Route::post('/produk/store', [ProdukController::class, 'store']);
 Route::get('/produk/edit/{id_produk}', [ProdukController::class, 'edit']);
@@ -57,7 +80,5 @@ Route::get('/detail/nota/{nomer_penjualan}', [PenjualanController::class, 'cetak
 Route::get('/riwayat', [RiwayatController::class, 'index']);
 Route::get('/riwayatt/{nomer_penjualan}', [RiwayatController::class, 'detail']);
 Route::get('/riwayatt/nota/{nomer_penjualan}', [PenjualanController::class, 'cetak']);
-Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
 ?>

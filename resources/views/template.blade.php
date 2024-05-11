@@ -36,7 +36,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">SIMALATON</a>
+            <a class="navbar-brand ps-3" href="/superadmin">SIMALATON</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -51,7 +51,7 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <!-- Authentication Links -->
-                @guest
+                {{-- @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -63,7 +63,7 @@
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
-                @else
+                @else --}}
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -71,18 +71,22 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item" href="/logout"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="/logout" method="POST" class="d-none">
                                 @csrf
                             </form>
+                            {{-- <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form> --}}
                         </div>
                     </li>
-                @endguest
+                {{-- @endguest --}}
             </ul>
         </nav>
         <div id="layoutSidenav">
@@ -91,12 +95,12 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <!-- <div class="sb-sidenav-menu-heading">Home</div> -->
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="/superadmin">
                                 <div class="sb-nav-link-icon"><i class="fas fa-house"></i></div>
                                 Beranda
                             </a>
                             <div class="sb-sidenav-menu-heading">Data Utama</div>
-                            <a class="nav-link" href="/produk">
+                            <a class="nav-link" href="/produkk">
                                 <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                                 Data Produk
                             </a>

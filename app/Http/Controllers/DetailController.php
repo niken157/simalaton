@@ -20,12 +20,12 @@ class DetailController extends Controller
                      //->groupBy('nomer_penjualan')
                     ->get();
        //Count(tb_sewa.jumlah_sewa)
-        return view('penjualan.detail',['penjualan' => $penjualan]);
+        return view('admin.penjualan.detail',['penjualan' => $penjualan]);
     }
     public function tambah()
 	{
 		// memanggil view tambah
-		return view('penjualan.tambah_penjualan');
+		return view('admin.penjualan.tambah_penjualan');
 	}
 	// method untuk insert data ke table penjualan
 	public function store(Request $request)
@@ -51,7 +51,7 @@ class DetailController extends Controller
         ->join('produk', 'penjualan.id_produk', '=', 'produk.id_produk')
         ->where('id_penjualan',$id_penjualan)->first();
 		// passing data penjualan yang didapat ke view edit.blade.php
-		return view('penjualan.edit_penjualan',['penjualan' => $penjualan]);
+		return view('admin.penjualan.edit_penjualan',['penjualan' => $penjualan]);
 	}
 	// update data produk
 	public function update(Request $request)
